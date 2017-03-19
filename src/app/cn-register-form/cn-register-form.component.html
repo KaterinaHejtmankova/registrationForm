@@ -1,0 +1,42 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="username" id="username">Username:</label>
+    <input class="form-control input-lg"
+           id="username"
+           type="text"
+           placeholder="Your username"
+           [(ngModel)]="user.username"
+           name="username"
+           required
+           (ngModelChange)="validateForm($event, username.id)"
+           #username
+           />
+  </div>
+  <div class="form-group">
+    <label for="password" id="password">Password:</label>
+    <input class="form-control input-lg"
+            id="password"
+            type="password"
+            placeholder="Your password"
+            [(ngModel)]="user.password"
+            name="password"
+            required
+            (ngModelChange)="validateForm($event, password.id)"
+            #password
+            />
+  </div>
+  <div class="form-group">
+    <label for="password" id="repeatedPassword">Repeat password:</label>
+    <input class="form-control input-lg"
+            id="repeatedPassword"
+            placeholder="Repeat password"
+            type="password"
+            [(ngModel)]="user.repeatedPassword"
+            name="repeatedPassword"
+            (ngModelChange)="validateForm($event, repeatedPassword.id)"
+            required
+            #repeatedPassword
+            />
+  </div>
+  <button type="submit" class="btn btn-default btn-lg" [(disabled)]="!isValid">Register</button>
+</form>
